@@ -1,1 +1,2 @@
-import {} from "./TextInput";
+export { TextInput } from './TextInput';
+export { Logo } from './Logo';
