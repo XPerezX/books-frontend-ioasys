@@ -6,6 +6,11 @@ const strings = {
 		section: {
 			welcome: "Bem vindo,",
 		},
+		bookCard: {
+			numberOfPages: (amount: number) => `${amount} páginas`,
+			publisedOn: (year: number) => `Publicado em ${year}`,
+			publisher: (name: string) => `Editora ${name}`,
+		},
 	},
 	fields: {
 		email: "E-mail",

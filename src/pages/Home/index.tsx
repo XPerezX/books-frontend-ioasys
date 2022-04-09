@@ -7,6 +7,8 @@ import useHome from "../../hooks/useHome";
 
 import {
 	Section,
+	BookCard,
+	PaginatedList,
 } from "../../components";
 
 export const Home: React.FC = () => {
@@ -28,13 +30,22 @@ export const Home: React.FC = () => {
 			bgRepeat="no-repeat"
 			bgPosition="center"
 			backgroundSize="cover"
+			py={10}
 			minH="100vh"
 		>
 			<Section
-				mx={{ base: 4, sm: 10, lg: "auto"}}
-				maxW="1280px"
+				mx={{ base: 4, sm: 10, xl: "auto"}}
+				maxW="1200px"
 				currentUserName={auth.currentUser?.user.name || ""}
 			>
+				<PaginatedList
+					items={home.items}
+					renderItem={(item, index) => (
+						<BookCard book={item} key={index} />
+					)}
+					gap={5}
+					templateColumns="repeat(auto-fit, minmax(280px, 1fr))"
+				/>
 			</Section>
 
 		</Flex>

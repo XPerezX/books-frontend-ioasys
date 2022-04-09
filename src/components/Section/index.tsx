@@ -14,10 +14,11 @@ export const Section: React.FC<IProps> = (props) => {
 	return (
 		<Flex
 			alignSelf="flex-start"
+			flexDirection="column"
 			w="100%"
 			{...restProps}
 		>
-			<Flex alignItems="center" w="100%" justifyContent="space-between">
+			<Flex alignItems="center" w="100%" justifyContent="space-between" mb={10}>
 				<Logo mode="dark" />
 				<Flex alignItems="center">
 					<Flex mr={5} display={{ base: "none", md: "flex" }}>

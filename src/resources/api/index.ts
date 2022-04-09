@@ -41,7 +41,7 @@ export const refreshToken = async (refreshToken: string): Promise<types.Tokens> 
 export const getPaginatedBooks = async (
 	authorizationToken: string,
 	page = 1,
-	itemsPerPage = 25,
+	itemsPerPage = 20,
 ): Promise<types.IPaginetedBookList> => {
 	const response = await axiosBase.get<types.IPaginetedBookList>(
 		`/books?page=${page}&amount=${itemsPerPage}`,
