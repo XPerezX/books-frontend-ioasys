@@ -7,14 +7,14 @@ export interface User {
 }
 
 export interface AuthenticatedUser {
-    user: User;
-    authorization: string;
-    refreshToken: string;
+	user: User;
+	authorization: string;
+	refreshToken: string;
 }
 
 export interface Tokens {
-    authorization: string;
-    refreshToken: string;
+	authorization: string;
+	refreshToken: string;
 }
 
 export interface Book {

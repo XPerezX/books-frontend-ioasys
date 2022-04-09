@@ -1,10 +1,13 @@
-import * as React from 'react';
-import { Button, Flex } from '@chakra-ui/react';
+import * as React from "react";
+import { Button, Flex } from "@chakra-ui/react";
 
-import { TextInput, Logo } from '../../components';
-import strings from '../../resources/strings';
+import { TextInput, Logo } from "../../components";
+import strings from "../../resources/strings";
+
+import useGlobalContext from "../../hooks/useGlobalContext";
 
 const Login: React.FC = () => {
+	const { auth } = useGlobalContext();
 	return (
 		<Flex
 			bgImage="url('/Background-Image.svg')"
@@ -15,7 +18,7 @@ const Login: React.FC = () => {
 		>
 			<Flex
 				mx={{ base: 5, sm: 10, lg: 0 }}
-				ml={{ lg: '20%' }}
+				ml={{ lg: "20%" }}
 				alignSelf="center"
 				flexDirection="column"
 				maxW="500px"
@@ -27,10 +30,10 @@ const Login: React.FC = () => {
 				<TextInput
 					label={strings.fields.password}
 					onChangeText={(e) => e}
-					inputProps={{ type: 'password' }}
+					inputProps={{ type: "password" }}
 					rightElement={{
 						childreen: (
-							<Button borderRadius="44px" color="#B22E6F">
+							<Button borderRadius="44px" color="#B22E6F" onClick ={() => auth.setEmail("teste") }>
 								{strings.actions.signIn}
 							</Button>
 						)
