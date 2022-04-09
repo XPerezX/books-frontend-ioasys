@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
 	Input,
 	FormControl,
@@ -6,8 +6,8 @@ import {
 	FormControlProps,
 	InputProps,
 	Box,
-	BoxProps,
-} from '@chakra-ui/react';
+	BoxProps
+} from "@chakra-ui/react";
 
 interface IProps extends FormControlProps {
 	onChangeText: (value: string) => void;
@@ -17,7 +17,7 @@ interface IProps extends FormControlProps {
 	rightElement?: {
 		props?: BoxProps;
 		childreen: JSX.Element;
-	}
+	};
 }
 
 export const TextInput: React.FC<IProps> = (props) => {
@@ -57,12 +57,7 @@ export const TextInput: React.FC<IProps> = (props) => {
 				pr={100}
 			/>
 			{rightElement && (
-				<Box
-					position="absolute"
-					right={4}
-					top={2.5}
-					{...rightElement.props}
-				>
+				<Box position="absolute" right={4} top={2.5} {...rightElement.props}>
 					{rightElement.childreen}
 				</Box>
 			)}
