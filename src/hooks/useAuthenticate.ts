@@ -8,6 +8,7 @@ import treatError from "../resources/treatError";
 const useAuthenticate = () => {
 	const [email, setEmail] = React.useState("");
 	const [password, setPassword] = React.useState("");
+	const [errorMessage, setErrorMessage] = React.useState("");
 
 	const loader = useLoader();
 
@@ -24,7 +25,7 @@ const useAuthenticate = () => {
 		localStorage.removeItem(local_storage_key);
 	};
 
-	const login = async (onSuccess: () => void) => {
+	const login = async (onSuccess: () => void, onError: () => void) => {
 		loader.start();
 		if (loader.isLoading) {
 			return;
@@ -38,7 +39,8 @@ const useAuthenticate = () => {
 		} catch (e) {
 			cleanLocalStorage();
 			const error = treatError(e);
-			showToast.error(error.message);
+			setErrorMessage(error.message);
+			onError();
 		} finally {
 			loader.end();
 		}
@@ -52,6 +54,7 @@ const useAuthenticate = () => {
 		setPassword,
 		setEmail,
 		isLoading: loader.isLoading,
+		errorMessage,
 	};
 };
 
