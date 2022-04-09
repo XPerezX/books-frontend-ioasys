@@ -66,8 +66,10 @@ const useAuthenticate = () => {
 			const tokens = await api.refreshToken(userFromLocalStorage.refreshToken);
 			
 			const currentUser = ({...userFromLocalStorage, ...tokens });
+			saveIntoLocalStorage(currentUser);
 			return currentUser;
 		} catch (error) {
+			cleanLocalStorage();
 			console.log(error);
 		} finally {
 			loader.end();

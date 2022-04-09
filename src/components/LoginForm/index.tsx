@@ -25,7 +25,7 @@ export const LoginForm: React.FC<IProps> = (props) => {
 			errorMessage={authHook.errorMessage}
 		>
 			<Flex {...flexprops}>
-				<Logo />
+				<Logo mb={10} />
 
 				<TextInput
 					label={strings.fields.email}

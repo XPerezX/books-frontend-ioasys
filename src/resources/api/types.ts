@@ -32,6 +32,16 @@ export interface Book {
 	id: string;
 }
 
+export interface IPaginetedBookList extends IPagination {
+	data: Book[],
+}
+
+export interface IPagination {
+	page: number;
+	totalItems: number;
+	totalPages: number;
+}
+
 export enum BookCategory {
 	biographies = "biografias",
 	collections = "coleções",
