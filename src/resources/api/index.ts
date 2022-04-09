@@ -1,7 +1,6 @@
 import axios from "axios";
 import * as types from "./types";
 export * as types from "./types";
-import treatError from "../treatError";
 
 const axiosBase = axios.create({
 	baseURL: "https://books.ioasys.com.br/api/v1"
