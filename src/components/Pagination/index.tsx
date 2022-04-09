@@ -10,14 +10,15 @@ import {
 import * as api from "../../resources/api";
 import strings from "../../resources/strings";
 
-interface IProps  extends StackProps {
+interface IProps extends StackProps {
 	pagination: api.types.IPagination;
 	onNextPage: () => void;
 	onPreviousPage: () => void;
+	disable?: boolean;
 }
 
 export const Pagination: React.FC<IProps> = (props) => {
-	const { pagination, onNextPage, onPreviousPage,  ...rest } = props;
+	const { pagination, onNextPage, onPreviousPage, disable,  ...rest } = props;
 	const componentStrings = strings.components.pagination;
 	return (
 		<HStack {...rest}>
@@ -30,7 +31,7 @@ export const Pagination: React.FC<IProps> = (props) => {
 				backdropBlur={2}
 				borderWidth={1}
 				p={1}
-				isDisabled={pagination.page === 1}
+				isDisabled={pagination.page === 1 || disable}
 				borderColor="gray.400"
 				onClick={onPreviousPage}
 			>
@@ -38,7 +39,7 @@ export const Pagination: React.FC<IProps> = (props) => {
 			</Button>
 			<Button
 				rounded="full"
-				isDisabled={pagination.page >= pagination.totalPages}
+				isDisabled={pagination.page >= pagination.totalPages || disable}
 				bg="#FFFFFF32"
 				backdropBlur={2}
 				borderWidth={1}

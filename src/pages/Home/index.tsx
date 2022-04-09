@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Flex, Spinner } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 import useGlobalContext from "../../hooks/useGlobalContext";
@@ -10,6 +10,7 @@ import {
 	BookCard,
 	PaginatedList,
 	Pagination,
+	Loading,
 } from "../../components";
 
 export const Home: React.FC = () => {
@@ -22,7 +23,7 @@ export const Home: React.FC = () => {
 	}, []);
 
 	if (auth.isLoading || !auth.currentUser) {
-		return <Spinner alignSelf="center" />
+		return <Loading justifyContent="center" my={20} />
 	}
 
 	return (
@@ -46,12 +47,14 @@ export const Home: React.FC = () => {
 					)}
 					gap={5}
 					templateColumns="repeat(auto-fit, minmax(280px, 1fr))"
+					isLoading={home.isLoading}
 					footer={
 						home.pagination ?
 							<Pagination
 								pagination={home.pagination}
 								onNextPage={home.nextPage}
 								onPreviousPage={home.previousPage}
+								disable={home.isLoading}
 								alignSelf="flex-end"
 								mt={5}
 							/>

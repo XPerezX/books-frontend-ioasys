@@ -1,7 +1,5 @@
 import React from "react";
-import { Grid, GridProps, Flex } from "@chakra-ui/react";
-import * as api from "../../resources/api"
-import { Pagination } from "../../components";
+import { Grid, GridProps, Flex, Progress } from "@chakra-ui/react";
 
 interface IProps<DataType> extends GridProps {
 	items: DataType[];
@@ -18,6 +16,7 @@ export const PaginatedList = <DataType, >(props: IProps<DataType>) => {
 			<Grid {...restProps}>
 				{items.map((item, index) => renderItem(item, index))}
 			</Grid>
+			{isLoading && <Progress mt={2} isIndeterminate size="xs" />}
 			{footer}
 		</Flex>
 	)

@@ -11,7 +11,6 @@ const useHome = () => {
 
 	const [items, setItems] = React.useState<api.types.Book[]>([]);
 	const [pagination, setPagination] = React.useState<api.types.IPagination | null>(null);
-	// const [currentPage, setCurrentPage] = React.useState(1);
 	
 	React.useEffect(() => {
 		if (auth.currentUser) {
@@ -46,7 +45,6 @@ const useHome = () => {
 			totalPages: paginetedBookList.totalPages,
 		})
 		setItems(paginetedBookList.data);
-		console.log(paginetedBookList);
 	}
 
 	const nextPage = () => {
