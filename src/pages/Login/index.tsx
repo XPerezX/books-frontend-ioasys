@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Button, Flex } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 import { TextInput, Logo } from "../../components";
 import strings from "../../resources/strings";
@@ -8,6 +9,13 @@ import useGlobalContext from "../../hooks/useGlobalContext";
 
 const Login: React.FC = () => {
 	const { auth } = useGlobalContext();
+	const navigator = useNavigate();
+
+	const signIn = () => {
+		const success = () => navigator("/");
+		auth.login(success)
+	};
+
 	return (
 		<Flex
 			bgImage="url('/Background-Image.svg')"
@@ -26,14 +34,23 @@ const Login: React.FC = () => {
 			>
 				<Logo />
 
-				<TextInput label={strings.fields.email} onChangeText={(e) => e} mb={5} />
+				<TextInput
+					label={strings.fields.email}
+					onChangeText={(value) => auth.setEmail(value)}
+					mb={5}
+				/>
 				<TextInput
 					label={strings.fields.password}
-					onChangeText={(e) => e}
+					onChangeText={(value) => auth.setPassword(value)}
 					inputProps={{ type: "password" }}
 					rightElement={{
 						childreen: (
-							<Button borderRadius="44px" color="#B22E6F" onClick ={() => auth.setEmail("teste") }>
+							<Button
+								borderRadius="44px"
+								color="#B22E6F"
+								onClick={signIn}
+								isLoading={auth.isLoading}
+							>
 								{strings.actions.signIn}
 							</Button>
 						)

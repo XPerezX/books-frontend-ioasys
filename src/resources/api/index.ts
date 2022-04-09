@@ -1,6 +1,7 @@
 import axios from "axios";
 import * as types from "./types";
 export * as types from "./types";
+import treatError from "../treatError";
 
 const axiosBase = axios.create({
 	baseURL: "https://books.ioasys.com.br/api/v1"
@@ -10,18 +11,19 @@ export const userLogin = async (
 	email: string,
 	password: string
 ): Promise<types.AuthenticatedUser> => {
-	const response = await axiosBase.post<types.User>("/auth/sign-in", {
-		email,
-		password
-	});
-	console.log(response);
-	console.log(response.headers["refresh-token"]);
-
-	return {
-		authorization: response.headers.authorization,
-		user: response.data,
-		refreshToken: response.headers["refresh-token"]
-	};
+	
+		const response = await axiosBase.post<types.User>("/auth/sign-in", {
+			email,
+			password
+		})
+		console.log("status",response.status);
+		console.log(response.headers["refresh-token"]);
+	
+		return {
+			authorization: response.headers.authorization,
+			user: response.data,
+			refreshToken: response.headers["refresh-token"]
+		};
 };
 
 export const refreshToken = async (refreshToken: string): Promise<types.Tokens> => {
