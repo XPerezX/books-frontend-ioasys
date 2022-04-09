@@ -2,10 +2,13 @@ import React from "react";
 import * as api from "../resources/api";
 import showToast from "../resources/showToasts";
 import useLoader from "./useLoader";
+import strings from "../resources/strings";
+import treatError from "../resources/treatError";
 
 const useAuthenticate = () => {
 	const [email, setEmail] = React.useState("");
 	const [password, setPassword] = React.useState("");
+	const [errorMessage, setErrorMessage] = React.useState("");
 
 	const loader = useLoader();
 
@@ -22,7 +25,7 @@ const useAuthenticate = () => {
 		localStorage.removeItem(local_storage_key);
 	};
 
-	const login = async () => {
+	const login = async (onSuccess: () => void, onError: () => void) => {
 		loader.start();
 		if (loader.isLoading) {
 			return;
@@ -31,10 +34,15 @@ const useAuthenticate = () => {
 			const authenticatedUser = await api.userLogin(email.trim(), password.trim());
 
 			saveIntoLocalStorage(authenticatedUser);
-			showToast.success(authenticatedUser.user.name);
-		} catch (error) {
+			showToast.success(strings.pages.login.success(authenticatedUser.user.name));
+			onSuccess();
+		} catch (e) {
 			cleanLocalStorage();
-			showToast.error("Error");
+			const error = treatError(e);
+			setErrorMessage(error.message);
+			onError();
+		} finally {
+			loader.end();
 		}
 	};
 
@@ -44,7 +52,9 @@ const useAuthenticate = () => {
 		email,
 		password,
 		setPassword,
-		setEmail
+		setEmail,
+		isLoading: loader.isLoading,
+		errorMessage,
 	};
 };
 

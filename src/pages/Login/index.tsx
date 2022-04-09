@@ -1,13 +1,21 @@
 import * as React from "react";
-import { Button, Flex } from "@chakra-ui/react";
+import { Flex, useDisclosure } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
-import { TextInput, Logo } from "../../components";
-import strings from "../../resources/strings";
+import { LoginForm } from "../../components";
 
 import useGlobalContext from "../../hooks/useGlobalContext";
 
 const Login: React.FC = () => {
 	const { auth } = useGlobalContext();
+	const navigator = useNavigate();
+	const { isOpen, onClose, onOpen } = useDisclosure();
+
+	const onSignIn = () => {
+		const success = () => navigator("/");
+		auth.login(success, onOpen)
+	};
+
 	return (
 		<Flex
 			bgImage="url('/Background-Image.svg')"
@@ -16,30 +24,21 @@ const Login: React.FC = () => {
 			backgroundSize="cover"
 			minH="100vh"
 		>
-			<Flex
+
+			<LoginForm
+				authHook={auth}
+				onSignIn={onSignIn}
 				mx={{ base: 5, sm: 10, lg: 0 }}
 				ml={{ lg: "20%" }}
 				alignSelf="center"
 				flexDirection="column"
 				maxW="500px"
 				w="100%"
-			>
-				<Logo />
-
-				<TextInput label={strings.fields.email} onChangeText={(e) => e} mb={5} />
-				<TextInput
-					label={strings.fields.password}
-					onChangeText={(e) => e}
-					inputProps={{ type: "password" }}
-					rightElement={{
-						childreen: (
-							<Button borderRadius="44px" color="#B22E6F" onClick ={() => auth.setEmail("teste") }>
-								{strings.actions.signIn}
-							</Button>
-						)
-					}}
-				/>
-			</Flex>
+				popover={{
+					isOpen,
+					onClose,
+				}}
+			/>
 		</Flex>
 	);
 };

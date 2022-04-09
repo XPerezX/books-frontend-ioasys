@@ -14,6 +14,7 @@ interface IProps extends FormControlProps {
 	label?: string;
 	value?: string;
 	inputProps?: InputProps;
+	disable?: boolean;
 	rightElement?: {
 		props?: BoxProps;
 		childreen: JSX.Element;
@@ -21,7 +22,7 @@ interface IProps extends FormControlProps {
 }
 
 export const TextInput: React.FC<IProps> = (props) => {
-	const { onChangeText, value, label, inputProps, rightElement, ...rest } = props;
+	const { onChangeText, disable, value, label, inputProps, rightElement, ...rest } = props;
 
 	return (
 		<FormControl
@@ -50,11 +51,12 @@ export const TextInput: React.FC<IProps> = (props) => {
 				color="white"
 				fontWeight={400}
 				fontSize="16px"
+				isDisabled={disable}
 				h="100%"
 				value={value}
 				onChange={(e) => onChangeText(e.target.value)}
 				{...inputProps}
-				pr={100}
+				{...rightElement && { pr: 100 }}
 			/>
 			{rightElement && (
 				<Box position="absolute" right={4} top={2.5} {...rightElement.props}>
