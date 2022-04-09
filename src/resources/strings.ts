@@ -2,7 +2,10 @@ const strings = {
 	components: {
 		logo: {
 			books: "Books"
-		}
+		},
+		section: {
+			welcome: "Bem vindo,",
+		},
 	},
 	fields: {
 		email: "E-mail",

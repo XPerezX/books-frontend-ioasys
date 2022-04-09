@@ -1,8 +1,12 @@
 import * as React from "react";
-import { Text } from "@chakra-ui/react";
-import { Link, useNavigate } from "react-router-dom";
+import { Flex } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 import useGlobalContext from "../../hooks/useGlobalContext";
+
+import {
+	Section,
+} from "../../components";
 
 export const Home: React.FC = () => {
 	const { auth } = useGlobalContext();
@@ -11,12 +15,23 @@ export const Home: React.FC = () => {
 	React.useEffect(() => {
 		auth.checkIfUserIsLoggedIn(() => navigator("/login"))
 	}, []);
-
+	console.log(auth.currentUser?.user)
 	return (
-		<>
-			<Text>Home {auth.email}</Text>
-			<Link to="/login">go to login</Link>
-		</>
+		<Flex
+			background="url('home-background.svg')"
+			bgRepeat="no-repeat"
+			bgPosition="center"
+			backgroundSize="cover"
+			minH="100vh"
+		>
+			<Section
+				mx="auto"
+				maxW="1280px"
+				currentUserName={auth.currentUser?.user.name || ""}
+			>
+			</Section>
+
+		</Flex>
 	);
 };
 
