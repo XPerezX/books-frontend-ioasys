@@ -4,7 +4,7 @@ import strings from "../../resources/strings";
 
 const logoModes = {
 	light: "/LogoLight.svg",
-	dark: "/LogoDark.svg",
+	dark: "/LogoDark.svg"
 };
 
 interface IProps extends FlexProps {
@@ -17,11 +17,9 @@ export const Logo: React.FC<IProps> = (props) => {
 
 	return (
 		<Flex alignItems="center" mb={10} {...props}>
-			<Image
-				src={logoModes[mode]}
-			/>
+			<Image src={logoModes[mode]} />
 			<Text
-				ml={5} 
+				ml={5}
 				fontWeight={300}
 				color={mode === "light" ? "white" : "#333333"}
 				fontSize="xx-large"

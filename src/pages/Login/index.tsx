@@ -1,11 +1,10 @@
-import * as React from "react";
-import { Button, Flex } from "@chakra-ui/react";
+import * as React from 'react';
+import { Button, Flex } from '@chakra-ui/react';
 
-import { TextInput, Logo } from "../../components";
-import strings from "../../resources/strings";
+import { TextInput, Logo } from '../../components';
+import strings from '../../resources/strings';
 
 const Login: React.FC = () => {
-
 	return (
 		<Flex
 			bgImage="url('/Background-Image.svg')"
@@ -16,7 +15,7 @@ const Login: React.FC = () => {
 		>
 			<Flex
 				mx={{ base: 5, sm: 10, lg: 0 }}
-				ml={{ lg: "20%" }}
+				ml={{ lg: '20%' }}
 				alignSelf="center"
 				flexDirection="column"
 				maxW="500px"
@@ -24,27 +23,19 @@ const Login: React.FC = () => {
 			>
 				<Logo />
 
-				<TextInput
-					label={strings.fields.email}
-					onChangeText={(e) => e}
-					mb={5}
-				/>
+				<TextInput label={strings.fields.email} onChangeText={(e) => e} mb={5} />
 				<TextInput
 					label={strings.fields.password}
 					onChangeText={(e) => e}
-					inputProps={{ type: "password" }}
+					inputProps={{ type: 'password' }}
 					rightElement={{
 						childreen: (
-							<Button
-								borderRadius="44px"
-								color="#B22E6F"
-							>
+							<Button borderRadius="44px" color="#B22E6F">
 								{strings.actions.signIn}
 							</Button>
 						)
 					}}
 				/>
-
 			</Flex>
 		</Flex>
 	);
