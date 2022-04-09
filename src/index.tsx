@@ -5,10 +5,17 @@ import { App } from "./pages/App";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorker from "./serviceWorker";
 
+import { ChakraProvider, theme } from "@chakra-ui/react";
+import GlobalProvider from "./contexts/GlobalContext";
+
 ReactDOM.render(
 	<React.StrictMode>
 		<ColorModeScript />
-		<App />
+		<ChakraProvider theme={theme}>
+			<GlobalProvider>
+				<App />
+			</GlobalProvider>
+		</ChakraProvider>
 	</React.StrictMode>,
 	document.getElementById("root")
 );
