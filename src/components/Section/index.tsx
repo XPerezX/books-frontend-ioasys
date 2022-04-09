@@ -20,7 +20,7 @@ export const Section: React.FC<IProps> = (props) => {
 			<Flex alignItems="center" w="100%" justifyContent="space-between">
 				<Logo mode="dark" />
 				<Flex alignItems="center">
-					<Flex mr={5}>
+					<Flex mr={5} display={{ base: "none", md: "flex" }}>
 						<Text fontSize="lg">
 							{componentStrings.welcome}
 						</Text>
