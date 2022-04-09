@@ -9,6 +9,7 @@ import {
 	Section,
 	BookCard,
 	PaginatedList,
+	Pagination,
 } from "../../components";
 
 export const Home: React.FC = () => {
@@ -45,6 +46,17 @@ export const Home: React.FC = () => {
 					)}
 					gap={5}
 					templateColumns="repeat(auto-fit, minmax(280px, 1fr))"
+					footer={
+						home.pagination ?
+							<Pagination
+								pagination={home.pagination}
+								onNextPage={home.nextPage}
+								onPreviousPage={home.previousPage}
+								alignSelf="flex-end"
+								mt={5}
+							/>
+						: undefined
+					}
 				/>
 			</Section>
 

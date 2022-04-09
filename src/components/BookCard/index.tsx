@@ -22,6 +22,9 @@ export const BookCard: React.FC<IProps> = (props) => {
 			cursor="pointer"
 			borderRadius="4px"
 			boxShadow="0px 6px 24px rgba(84, 16, 95, 0.13)"
+			_hover={{
+				boxShadow: "0px 16px 80px rgba(84, 16, 95, 0.32)",
+			}}
 			{...restProps}
 		>
 			<Image

@@ -5,3 +5,4 @@ export { ErrorPopover } from "./ErrorPopover";
 export { Section } from "./Section";
 export { BookCard } from "./BookCard";
 export { PaginatedList } from "./PaginatedList";
+export { Pagination } from "./Pagination";
