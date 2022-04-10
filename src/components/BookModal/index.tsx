@@ -27,7 +27,11 @@ export const BookModal: React.FC<IProps> = (props) => {
 	return (
 		<Modal onClose={onClose} isOpen={isOpen} isCentered>
 			<ModalOverlay />
-			<ModalContent maxW="900px" w="100%" m={{ base: 5, lg: 0}}>
+			<ModalContent
+				maxW={{ base: "480px", md: "900px"}}
+				w="100%"
+				m={{ base: 5, lg: 0}}
+			>
 				<ModalCloseButton />
 				<ModalBody>
 					{book && (
