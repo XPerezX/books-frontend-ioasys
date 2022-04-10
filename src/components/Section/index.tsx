@@ -10,7 +10,7 @@ interface IProps extends FlexProps {
 }
 
 export const Section: React.FC<IProps> = (props) => {
-	const { currentUserName, onLogout, disable, children , ...restProps } = props;
+	const { currentUserName, onLogout, disable, children, ...restProps } = props;
 	const componentStrings = strings.components.section;
 
 	return (
@@ -20,14 +20,24 @@ export const Section: React.FC<IProps> = (props) => {
 			w="100%"
 			{...restProps}
 		>
-			<Flex alignItems="center" w="100%" justifyContent="space-between" mb={10}>
+			<Flex
+				alignItems="center"
+				w="100%"
+				justifyContent="space-between"
+				mb={10}
+			>
 				<Logo mode="dark" />
 				<Flex alignItems="center">
-					<Flex mr={5} display={{ base: "none", md: "flex" }}>
-						<Text fontSize="lg">
-							{componentStrings.welcome}
-						</Text>
-						<Text fontWeight="bold" fontSize="lg" ml={2}>
+					<Flex
+						mr={5}
+						display={{ base: "none", md: "flex" }}
+					>
+						<Text fontSize="lg">{componentStrings.welcome}</Text>
+						<Text
+							fontWeight="bold"
+							fontSize="lg"
+							ml={2}
+						>
 							{currentUserName}
 						</Text>
 					</Flex>

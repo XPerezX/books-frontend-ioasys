@@ -12,7 +12,7 @@ const useHome = () => {
 
 	const [items, setItems] = React.useState<api.types.Book[]>([]);
 	const [pagination, setPagination] = React.useState<api.types.IPagination | null>(null);
-	
+
 	React.useEffect(() => {
 		if (auth.currentUser) {
 			fetchPage();
@@ -44,28 +44,28 @@ const useHome = () => {
 		setPagination({
 			page: paginetedBookList.page,
 			totalItems: paginetedBookList.totalItems,
-			totalPages: paginetedBookList.totalPages,
-		})
+			totalPages: paginetedBookList.totalPages
+		});
 		setItems(paginetedBookList.data);
-	}
+	};
 
 	const nextPage = () => {
 		if (pagination) {
 			if (pagination.page + 1 > pagination.totalPages) {
-				showToasts.error(strings.errors.theresNoMorePages)
+				showToasts.error(strings.errors.theresNoMorePages);
 				return;
 			}
-			fetchPage(pagination.page + 1)
+			fetchPage(pagination.page + 1);
 		}
 	};
 
 	const previousPage = () => {
 		if (pagination) {
 			if (pagination.page === 1) {
-				showToasts.error(strings.errors.theresNoMorePreviousPages)
+				showToasts.error(strings.errors.theresNoMorePreviousPages);
 				return;
 			}
-			fetchPage(pagination.page - 1)
+			fetchPage(pagination.page - 1);
 		}
 	};
 
@@ -76,7 +76,7 @@ const useHome = () => {
 		pagination,
 		nextPage,
 		previousPage
-	}
+	};
 };
 
-export default useHome
+export default useHome;

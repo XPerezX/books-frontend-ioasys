@@ -4,7 +4,7 @@ import {
 	PopoverTrigger,
 	PopoverContent,
 	PopoverArrow,
-	PopoverBody,
+	PopoverBody
 } from "@chakra-ui/popover";
 
 interface IProps {
@@ -23,9 +23,7 @@ export const ErrorPopover: React.FC<IProps> = (props) => {
 			placement="bottom-start"
 			closeOnBlur={false}
 		>
-			<PopoverTrigger>
-				{props.children}
-			</PopoverTrigger>
+			<PopoverTrigger>{props.children}</PopoverTrigger>
 			<PopoverContent
 				borderRadius={4}
 				backdropBlur={2}
@@ -49,5 +47,5 @@ export const ErrorPopover: React.FC<IProps> = (props) => {
 				</PopoverBody>
 			</PopoverContent>
 		</Popover>
-	)
+	);
 };

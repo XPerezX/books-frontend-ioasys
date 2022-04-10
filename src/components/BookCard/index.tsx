@@ -1,16 +1,9 @@
 import React from "react";
-import {
-	Flex,
-	Image,
-	Heading,
-	Text,
-	Box,
-	FlexProps,
-} from "@chakra-ui/react";
+import { Flex, Image, Heading, Text, Box, FlexProps } from "@chakra-ui/react";
 
 import * as api from "../../resources/api";
 
-import { BookCardDetails} from "./BookCardDetails";
+import { BookCardDetails } from "./BookCardDetails";
 
 interface IProps extends FlexProps {
 	book: api.types.Book;
@@ -30,7 +23,7 @@ export const BookCard: React.FC<IProps> = (props) => {
 			borderRadius={2}
 			boxShadow="0px 6px 24px rgba(84, 16, 95, 0.13)"
 			_hover={{
-				boxShadow: "0px 16px 80px rgba(84, 16, 95, 0.32)",
+				boxShadow: "0px 16px 80px rgba(84, 16, 95, 0.32)"
 			}}
 			{...restProps}
 		>
@@ -44,22 +37,22 @@ export const BookCard: React.FC<IProps> = (props) => {
 				flexDirection="column"
 				justifyContent="space-between"
 			>
-
 				<Box>
-					<Heading fontSize="sm" noOfLines={2}>
+					<Heading
+						fontSize="sm"
+						noOfLines={2}
+					>
 						{book.title}
 					</Heading>
-								
+
 					<Text
 						color="primary.600"
 						fontSize="xs"
 						fontWeight="bold"
 						noOfLines={2}
 					>
-
 						{book.authors.join("\n")}
 					</Text>
-					
 				</Box>
 
 				<BookCardDetails
@@ -69,10 +62,7 @@ export const BookCard: React.FC<IProps> = (props) => {
 					published={book.published}
 					publisher={book.publisher}
 				/>
-							
 			</Flex>
 		</Flex>
-				
-
 	);
 };

@@ -1,9 +1,5 @@
 import React from "react";
-import {
-	Text,
-	HStack,
-	StackProps,
-} from "@chakra-ui/react";
+import { Text, HStack, StackProps } from "@chakra-ui/react";
 
 import * as api from "../../resources/api";
 import strings from "../../resources/strings";
@@ -18,7 +14,7 @@ interface IProps extends StackProps {
 }
 
 export const Pagination: React.FC<IProps> = (props) => {
-	const { pagination, onNextPage, onPreviousPage, disable,  ...rest } = props;
+	const { pagination, onNextPage, onPreviousPage, disable, ...rest } = props;
 	const componentStrings = strings.components.pagination;
 	return (
 		<HStack {...rest}>

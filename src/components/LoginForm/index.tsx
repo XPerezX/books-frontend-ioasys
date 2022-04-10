@@ -12,7 +12,7 @@ interface IProps extends FlexProps {
 	popover: {
 		isOpen: boolean;
 		onClose: () => void;
-	},
+	};
 }
 
 export const LoginForm: React.FC<IProps> = (props) => {

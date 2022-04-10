@@ -33,7 +33,7 @@ export interface Book {
 }
 
 export interface IPaginetedBookList extends IPagination {
-	data: Book[],
+	data: Book[];
 }
 
 export interface IPagination {

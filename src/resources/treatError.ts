@@ -6,8 +6,8 @@ interface CustomError {
 const treatError = (e: any): CustomError => {
 	return {
 		message: e.response.data.errors.message,
-		status: e.response.status,
-	}
+		status: e.response.status
+	};
 };
 
 export default treatError;

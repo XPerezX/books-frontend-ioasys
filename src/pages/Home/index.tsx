@@ -5,14 +5,7 @@ import { useNavigate } from "react-router-dom";
 import useGlobalContext from "../../hooks/useGlobalContext";
 import useHome from "../../hooks/useHome";
 
-import {
-	Section,
-	BookCard,
-	GridList,
-	Pagination,
-	Loading,
-	BookModal,
-} from "../../components";
+import { Section, BookCard, GridList, Pagination, Loading, BookModal } from "../../components";
 import useBookModal from "../../hooks/useBookModal";
 
 export const Home: React.FC = () => {
@@ -23,12 +16,17 @@ export const Home: React.FC = () => {
 
 	React.useEffect(() => {
 		if (!auth.currentUser) {
-			auth.checkIfUserIsLoggedIn(() => navigator("/login"))
+			auth.checkIfUserIsLoggedIn(() => navigator("/login"));
 		}
 	}, [auth.currentUser]);
 
 	if (auth.isLoading) {
-		return <Loading justifyContent="center" my={20} />
+		return (
+			<Loading
+				justifyContent="center"
+				my={20}
+			/>
+		);
 	}
 
 	return (
@@ -41,7 +39,7 @@ export const Home: React.FC = () => {
 			minH="100vh"
 		>
 			<Section
-				mx={{ base: 4, sm: 10, xl: "auto"}}
+				mx={{ base: 4, sm: 10, xl: "auto" }}
 				maxW="1200px"
 				currentUserName={auth.currentUser?.user.name || ""}
 				onLogout={auth.logout}
@@ -62,7 +60,7 @@ export const Home: React.FC = () => {
 					templateColumns="repeat(auto-fit, minmax(280px, 1fr))"
 					isLoading={home.isLoading}
 					footer={
-						home.pagination ?
+						home.pagination ? (
 							<Pagination
 								pagination={home.pagination}
 								onNextPage={home.nextPage}
@@ -71,7 +69,7 @@ export const Home: React.FC = () => {
 								alignSelf="flex-end"
 								mt={5}
 							/>
-						: undefined
+						) : undefined
 					}
 				/>
 				<BookModal
@@ -80,7 +78,6 @@ export const Home: React.FC = () => {
 					book={bookmodalHook.book}
 				/>
 			</Section>
-
 		</Flex>
 	);
 };

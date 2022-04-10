@@ -1,10 +1,5 @@
 import React from "react";
-import {
-	VStack,
-	Text,
-	Box,
-	BoxProps,
-} from "@chakra-ui/react";
+import { VStack, Text, Box, BoxProps } from "@chakra-ui/react";
 import { types } from "../../../resources/api";
 import strings from "../../../resources/strings";
 import { DetailsRow } from "../../DetailsRow";
@@ -27,7 +22,10 @@ export const BookModalDetails: React.FC<IProps> = (props) => {
 				{componentStrings.title}
 			</Text>
 
-			<VStack spacing={0.5} alignItems="flex-start">
+			<VStack
+				spacing={0.5}
+				alignItems="flex-start"
+			>
 				<DetailsRow
 					field={componentStrings.fields.pages}
 					value={componentStrings.pages(book.pageCount)}

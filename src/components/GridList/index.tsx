@@ -8,18 +8,21 @@ interface IProps<DataType> extends GridProps {
 	footer?: JSX.Element;
 }
 
-export const GridList = <DataType, >(props: IProps<DataType>) => {
+export const GridList = <DataType,>(props: IProps<DataType>) => {
 	const { items, renderItem, isLoading, footer, ...restProps } = props;
 
 	return (
 		<Flex flexDirection="column">
-			<Grid {...restProps}>
-				{items.map((item, index) => renderItem(item, index))}
-			</Grid>
-			{isLoading && 
-				<Progress mt={2} isIndeterminate size="xs" colorScheme="primary" />
-			}
+			<Grid {...restProps}>{items.map((item, index) => renderItem(item, index))}</Grid>
+			{isLoading && (
+				<Progress
+					mt={2}
+					isIndeterminate
+					size="xs"
+					colorScheme="primary"
+				/>
+			)}
 			{footer}
 		</Flex>
-	)
+	);
 };
