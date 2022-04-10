@@ -31,13 +31,19 @@ export const BookModal: React.FC<IProps> = (props) => {
 				maxW={{ base: "480px", md: "900px"}}
 				w="100%"
 				m={{ base: 5, lg: 0}}
+				position="relative"
 			>
-				<ModalCloseButton />
+				<ModalCloseButton
+					zIndex={1000}
+					bg="white"
+					rounded="full"
+					position="fixed"
+				/>
 				<ModalBody>
 					{book && (
 						<Flex
 							w="100%"
-							maxH={{ base: "90vh", md: "auto"}}
+							maxH={{ base: "80vh", md: "auto"}}
 							p={{ base: 2, lg: 5}}
 							flexDirection={{ base: "column", md: "row"}}
 							overflowY={{ base: "auto", md: "hidden" }}
