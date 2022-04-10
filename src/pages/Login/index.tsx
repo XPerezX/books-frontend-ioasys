@@ -13,7 +13,7 @@ const Login: React.FC = () => {
 
 	const onSignIn = () => {
 		const success = () => navigator("/");
-		auth.login(success, onOpen)
+		auth.login(success, onOpen);
 	};
 
 	return (
@@ -24,7 +24,6 @@ const Login: React.FC = () => {
 			backgroundSize="cover"
 			minH="100vh"
 		>
-
 			<LoginForm
 				authHook={auth}
 				onSignIn={onSignIn}
@@ -36,7 +35,7 @@ const Login: React.FC = () => {
 				w="100%"
 				popover={{
 					isOpen,
-					onClose,
+					onClose
 				}}
 			/>
 		</Flex>

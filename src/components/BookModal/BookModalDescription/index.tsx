@@ -1,9 +1,5 @@
 import React from "react";
-import {
-	Box,
-	Text,
-	BoxProps,
-} from "@chakra-ui/react";
+import { Box, Text, BoxProps } from "@chakra-ui/react";
 
 import strings from "../../../resources/strings";
 
@@ -14,7 +10,6 @@ export const BookModalDescription: React.FC<IProps> = (props) => {
 	const { text, ...rest } = props;
 	const componentStrings = strings.components.bookModal.description;
 	return (
-
 		<Box {...rest}>
 			<Text
 				fontWeight="bold"

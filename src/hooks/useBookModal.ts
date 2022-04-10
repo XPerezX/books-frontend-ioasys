@@ -7,17 +7,17 @@ const useBookModal = () => {
 
 	const [book, setBook] = React.useState<api.types.Book | null>(null);
 
-    const onOpenBookModal = (book: api.types.Book) => {
-        setBook(book);
-        onOpen();
-    };
+	const onOpenBookModal = (book: api.types.Book) => {
+		setBook(book);
+		onOpen();
+	};
 
 	return {
-        isOpen,
-        onOpenBookModal,
-        book,
-        onClose
-	}
+		isOpen,
+		onOpenBookModal,
+		book,
+		onClose
+	};
 };
 
-export default useBookModal
+export default useBookModal;

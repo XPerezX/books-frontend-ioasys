@@ -16,7 +16,10 @@ export const Logo: React.FC<IProps> = (props) => {
 	const { mode = "light" } = props;
 
 	return (
-		<Flex alignItems="center" {...props}>
+		<Flex
+			alignItems="center"
+			{...props}
+		>
 			<Image src={logoModes[mode]} />
 			<Text
 				ml={5}

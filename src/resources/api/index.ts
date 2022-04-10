@@ -10,17 +10,16 @@ export const userLogin = async (
 	email: string,
 	password: string
 ): Promise<types.AuthenticatedUser> => {
-	
-		const response = await axiosBase.post<types.User>("/auth/sign-in", {
-			email,
-			password
-		})
-	
-		return {
-			authorization: response.headers.authorization,
-			user: response.data,
-			refreshToken: response.headers["refresh-token"]
-		};
+	const response = await axiosBase.post<types.User>("/auth/sign-in", {
+		email,
+		password
+	});
+
+	return {
+		authorization: response.headers.authorization,
+		user: response.data,
+		refreshToken: response.headers["refresh-token"]
+	};
 };
 
 export const refreshToken = async (refreshToken: string): Promise<types.Tokens> => {
@@ -37,7 +36,7 @@ export const refreshToken = async (refreshToken: string): Promise<types.Tokens> 
 export const getPaginatedBooks = async (
 	authorizationToken: string,
 	page = 1,
-	itemsPerPage = 20,
+	itemsPerPage = 20
 ): Promise<types.IPaginetedBookList> => {
 	const response = await axiosBase.get<types.IPaginetedBookList>(
 		`/books?page=${page}&amount=${itemsPerPage}`,

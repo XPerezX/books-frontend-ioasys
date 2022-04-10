@@ -56,10 +56,15 @@ export const TextInput: React.FC<IProps> = (props) => {
 				value={value}
 				onChange={(e) => onChangeText(e.target.value)}
 				{...inputProps}
-				{...rightElement && { pr: 100 }}
+				{...(rightElement && { pr: 100 })}
 			/>
 			{rightElement && (
-				<Box position="absolute" right={4} top={2.5} {...rightElement.props}>
+				<Box
+					position="absolute"
+					right={4}
+					top={2.5}
+					{...rightElement.props}
+				>
 					{rightElement.childreen}
 				</Box>
 			)}

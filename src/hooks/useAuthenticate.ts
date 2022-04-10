@@ -17,14 +17,16 @@ const useAuthenticate = () => {
 
 	const local_storage_key = "books-frontend-current-user";
 
-	const saveIntoLocalStorage = (currentAuthenticatedUser: api.types.AuthenticatedUser): api.types.AuthenticatedUser => {
+	const saveIntoLocalStorage = (
+		currentAuthenticatedUser: api.types.AuthenticatedUser
+	): api.types.AuthenticatedUser => {
 		setCurrentUser(currentAuthenticatedUser);
 		localStorage.setItem(local_storage_key, JSON.stringify(currentAuthenticatedUser));
 
 		return currentAuthenticatedUser;
 	};
 
-	const getCurrentUserFromLocalStorage = (): api.types.AuthenticatedUser=> {
+	const getCurrentUserFromLocalStorage = (): api.types.AuthenticatedUser => {
 		const currentUserJson = localStorage.getItem(local_storage_key);
 		if (!currentUserJson) {
 			throw new Error(strings.errors.userIsNotLoggedIn);
@@ -66,8 +68,8 @@ const useAuthenticate = () => {
 			const userFromLocalStorage = getCurrentUserFromLocalStorage();
 
 			const tokens = await api.refreshToken(userFromLocalStorage.refreshToken);
-			
-			const currentUser = ({...userFromLocalStorage, ...tokens });
+
+			const currentUser = { ...userFromLocalStorage, ...tokens };
 			saveIntoLocalStorage(currentUser);
 			return currentUser;
 		} catch (error) {
@@ -78,16 +80,16 @@ const useAuthenticate = () => {
 		}
 	};
 
-	const checkIfUserIsLoggedIn = async (onFail: () => void, onSuccess?: () => void, ) => {
-		if (!await getCurrentUser()) {
+	const checkIfUserIsLoggedIn = async (onFail: () => void, onSuccess?: () => void) => {
+		if (!(await getCurrentUser())) {
 			onFail();
 			return;
 		}
 		onSuccess && onSuccess();
-	}
+	};
 
 	const logout = () => {
-		cleanLocalStorage()
+		cleanLocalStorage();
 	};
 
 	return {
@@ -101,7 +103,7 @@ const useAuthenticate = () => {
 		email,
 		password,
 		isLoading: loader.isLoading,
-		errorMessage,
+		errorMessage
 	};
 };
 
