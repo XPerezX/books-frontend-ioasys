@@ -10,9 +10,11 @@ const strings = {
 			welcome: "Bem vindo,",
 		},
 		bookCard: {
-			numberOfPages: (amount: number) => `${amount} páginas`,
-			publisedOn: (year: number) => `Publicado em ${year}`,
-			publisher: (name: string) => `Editora ${name}`,
+			details: {
+				numberOfPages: (amount: number) => `${amount} páginas`,
+				publisedOn: (year: number) => `Publicado em ${year}`,
+				publisher: (name: string) => `Editora ${name}`,
+			},
 		},
 		bookModal: {
 			description: {
