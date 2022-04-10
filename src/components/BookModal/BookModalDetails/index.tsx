@@ -5,14 +5,14 @@ import {
 	Box,
 	BoxProps,
 } from "@chakra-ui/react";
-import { types } from "../../resources/api";
-import strings from "../../resources/strings";
-import { DetailsRow } from "./DetailsRow";
+import { types } from "../../../resources/api";
+import strings from "../../../resources/strings";
+import { DetailsRow } from "../../DetailsRow";
 
 interface IProps extends BoxProps {
 	book: types.Book;
 }
-export const BookDetails: React.FC<IProps> = (props) => {
+export const BookModalDetails: React.FC<IProps> = (props) => {
 	const { book, ...rest } = props;
 	const componentStrings = strings.components.bookDetails;
 	return (

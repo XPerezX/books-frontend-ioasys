@@ -10,12 +10,13 @@ import {
 	Box,
 	Text,
 	Heading,
+	ChakraProps
 } from "@chakra-ui/react";
 
 import { types } from "../../resources/api";
 
-import { BookDetails } from "../BookDetails";
-import { Decription } from "./Decription";
+import { BookModalDetails } from "./BookModalDetails";
+import { BookModalDescription } from "./BookModalDescription";
 
 interface IProps {
 	isOpen: boolean;
@@ -24,6 +25,18 @@ interface IProps {
 }
 export const BookModal: React.FC<IProps> = (props) => {
 	const { isOpen, onClose, book } = props;
+
+	const scrollStyle: ChakraProps["css"] = {
+		"&::-webkit-scrollbar": {
+		width: "4px",
+		borderRadius: "20px",
+		},
+		"&::-webkit-scrollbar-thumb": {
+		backgroundColor: "#AB2680",
+		borderRadius: "20px",
+		},
+	};
+
 	return (
 		<Modal onClose={onClose} isOpen={isOpen} isCentered>
 			<ModalOverlay />
@@ -47,6 +60,7 @@ export const BookModal: React.FC<IProps> = (props) => {
 							p={{ base: 2, lg: 5}}
 							flexDirection={{ base: "column", md: "row"}}
 							overflowY={{ base: "auto", md: "hidden" }}
+							css={scrollStyle}
 						>
 							<Image
 								w={{ base: "100%", md: "50%"}}
@@ -59,6 +73,8 @@ export const BookModal: React.FC<IProps> = (props) => {
 								w={{ base: "100%", md: "45%"}}
 								justifyContent="space-between"
 								overflowY={{ md: "auto"}}
+								pr={{ md: 2}}
+								css={scrollStyle}
 							>
 
 								<Box>
@@ -69,19 +85,19 @@ export const BookModal: React.FC<IProps> = (props) => {
 									<Text
 										color="#B22E6F"
 										fontWeight="bold"
-										fontSize="sm"
+										fontSize="xs"
 									>
 										{book.authors.join(", ")}
 									</Text>
 									
 								</Box>
 								
-								<BookDetails
+								<BookModalDetails
 									book={book}
 									mt={{ base: 8, md: 0 }}
 								/>
 
-								<Decription
+								<BookModalDescription
 									mt={{ base: 8, md: 0 }}
 									text={book.description}
 								/>
