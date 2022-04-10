@@ -20,7 +20,7 @@ import { Decription } from "./Decription";
 interface IProps {
 	isOpen: boolean;
 	onClose: () => void;
-	book?: types.Book;
+	book?: types.Book | null;
 }
 export const BookModal: React.FC<IProps> = (props) => {
 	const { isOpen, onClose, book } = props;

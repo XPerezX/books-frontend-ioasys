@@ -13,11 +13,13 @@ import {
 	Loading,
 	BookModal,
 } from "../../components";
+import useBookModal from "../../hooks/useBookModal";
 
 export const Home: React.FC = () => {
 	const { auth } = useGlobalContext();
 	const navigator = useNavigate();
 	const home = useHome();
+	const bookmodalHook = useBookModal();
 
 	React.useEffect(() => {
 		if (!auth.currentUser) {
@@ -48,7 +50,13 @@ export const Home: React.FC = () => {
 				<PaginatedList
 					items={home.items}
 					renderItem={(item, index) => (
-						<BookCard book={item} key={index} />
+						<BookCard
+							book={item}
+							key={index}
+							onClick={() => {
+								bookmodalHook.onOpenBookModal(item);
+							}}
+						/>
 					)}
 					gap={5}
 					templateColumns="repeat(auto-fit, minmax(280px, 1fr))"
@@ -66,7 +74,11 @@ export const Home: React.FC = () => {
 						: undefined
 					}
 				/>
-				<BookModal isOpen={true} onClose={() => console} book={home.items[0]} />
+				<BookModal
+					isOpen={bookmodalHook.isOpen}
+					onClose={bookmodalHook.onClose}
+					book={bookmodalHook.book}
+				/>
 			</Section>
 
 		</Flex>
