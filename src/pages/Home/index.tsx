@@ -19,16 +19,18 @@ export const Home: React.FC = () => {
 	const home = useHome();
 
 	React.useEffect(() => {
-		auth.checkIfUserIsLoggedIn(() => navigator("/login"))
-	}, []);
+		if (!auth.currentUser) {
+			auth.checkIfUserIsLoggedIn(() => navigator("/login"))
+		}
+	}, [auth.currentUser]);
 
-	if (auth.isLoading || !auth.currentUser) {
+	if (auth.isLoading) {
 		return <Loading justifyContent="center" my={20} />
 	}
 
 	return (
 		<Flex
-			background="url('home-background.svg')"
+			background="url('home-bg.svg')"
 			bgRepeat="no-repeat"
 			bgPosition="center"
 			backgroundSize="cover"
@@ -39,6 +41,8 @@ export const Home: React.FC = () => {
 				mx={{ base: 4, sm: 10, xl: "auto"}}
 				maxW="1200px"
 				currentUserName={auth.currentUser?.user.name || ""}
+				onLogout={auth.logout}
+				disable={auth.isLoading}
 			>
 				<PaginatedList
 					items={home.items}

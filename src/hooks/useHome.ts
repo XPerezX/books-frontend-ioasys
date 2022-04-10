@@ -4,6 +4,7 @@ import * as api from "../resources/api";
 import treatError from "../resources/treatError";
 import showToasts from "../resources/showToasts";
 import useGlobalContext from "./useGlobalContext";
+import strings from "../resources/strings";
 
 const useHome = () => {
 	const { auth } = useGlobalContext();
@@ -21,6 +22,7 @@ const useHome = () => {
 	const fetchPage = async (page = 1) => {
 		loader.start();
 		if (loader.isLoading) {
+			showToasts.error(strings.errors.stillRunning);
 			return;
 		}
 		if (!auth.currentUser) {
@@ -49,8 +51,8 @@ const useHome = () => {
 
 	const nextPage = () => {
 		if (pagination) {
-			if (pagination.page + 1 >= pagination.totalPages) {
-				showToasts.error("Não há mais paginas")
+			if (pagination.page + 1 > pagination.totalPages) {
+				showToasts.error(strings.errors.theresNoMorePages)
 				return;
 			}
 			fetchPage(pagination.page + 1)
@@ -61,7 +63,7 @@ const useHome = () => {
 	const previousPage = () => {
 		if (pagination) {
 			if (pagination.page === 1) {
-				showToasts.error("Não é possivel diminuir paginação")
+				showToasts.error(strings.errors.theresNoMorePreviousPages)
 				return;
 			}
 			fetchPage(pagination.page - 1)
