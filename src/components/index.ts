@@ -8,3 +8,4 @@ export { PaginatedList } from "./PaginatedList";
 export { Pagination } from "./Pagination";
 export { Loading } from "./Loading";
 export { BookModal } from "./BookModal";
+export { IconButton } from "./IconButton";

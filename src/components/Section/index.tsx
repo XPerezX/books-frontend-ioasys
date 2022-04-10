@@ -1,6 +1,6 @@
-import * as React from "react";
-import { Flex, Image, Button, Text, FlexProps } from "@chakra-ui/react";
-import { Logo } from "../../components";
+import React from "react";
+import { Flex, Text, FlexProps } from "@chakra-ui/react";
+import { Logo, IconButton } from "../../components";
 import strings from "../../resources/strings";
 
 interface IProps extends FlexProps {
@@ -31,18 +31,11 @@ export const Section: React.FC<IProps> = (props) => {
 							{currentUserName}
 						</Text>
 					</Flex>
-					<Button
-						rounded="full"
-						bg="#FFFFFF32"
-						backdropBlur={2}
-						borderWidth={1}
-						p={1}
-						borderColor="gray.400"
+					<IconButton
+						src="logoutIcon.svg"
 						disabled={disable}
 						onClick={onLogout}
-					>
-						<Image src="logoutIcon.svg" />
-					</Button>
+					/>
 				</Flex>
 			</Flex>
 			{children}

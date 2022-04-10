@@ -1,14 +1,14 @@
 import React from "react";
 import {
 	Text,
-	Button,
-	Image,
 	HStack,
 	StackProps,
 } from "@chakra-ui/react";
 
 import * as api from "../../resources/api";
 import strings from "../../resources/strings";
+
+import { IconButton } from "../../components";
 
 interface IProps extends StackProps {
 	pagination: api.types.IPagination;
@@ -25,30 +25,16 @@ export const Pagination: React.FC<IProps> = (props) => {
 			<Text>
 				{componentStrings.pageOutOfTotalPages(pagination.page, pagination.totalPages)}
 			</Text>
-			<Button
-				rounded="full"
-				bg="#FFFFFF32"
-				backdropBlur={2}
-				borderWidth={1}
-				p={1}
-				isDisabled={pagination.page === 1 || disable}
-				borderColor="gray.400"
+			<IconButton
 				onClick={onPreviousPage}
-			>
-				<Image src="lefArrowIcon.svg" />
-			</Button>
-			<Button
-				rounded="full"
-				isDisabled={pagination.page >= pagination.totalPages || disable}
-				bg="#FFFFFF32"
-				backdropBlur={2}
-				borderWidth={1}
-				p={1}
-				borderColor="gray.400"
+				src="lefArrowIcon.svg"
+				isDisabled={pagination.page === 1 || disable}
+			/>
+			<IconButton
 				onClick={onNextPage}
-			>
-				<Image src="rightArrowIcon.svg" />
-			</Button>
+				src="rightArrowIcon.svg"
+				isDisabled={pagination.page >= pagination.totalPages || disable}
+			/>
 		</HStack>
 	);
 };
