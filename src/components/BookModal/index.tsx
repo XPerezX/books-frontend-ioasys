@@ -83,7 +83,7 @@ export const BookModal: React.FC<IProps> = (props) => {
 									</Heading>
 				
 									<Text
-										color="#B22E6F"
+										color="primary.600"
 										fontWeight="bold"
 										fontSize="xs"
 									>

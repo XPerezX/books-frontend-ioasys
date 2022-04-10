@@ -51,7 +51,7 @@ export const BookCard: React.FC<IProps> = (props) => {
 					</Heading>
 								
 					<Text
-						color="#B22E6F"
+						color="primary.600"
 						fontSize="xs"
 						fontWeight="bold"
 						noOfLines={2}

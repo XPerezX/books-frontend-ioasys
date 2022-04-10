@@ -16,7 +16,9 @@ export const PaginatedList = <DataType, >(props: IProps<DataType>) => {
 			<Grid {...restProps}>
 				{items.map((item, index) => renderItem(item, index))}
 			</Grid>
-			{isLoading && <Progress mt={2} isIndeterminate size="xs" />}
+			{isLoading && 
+				<Progress mt={2} isIndeterminate size="xs" colorScheme="primary" />
+			}
 			{footer}
 		</Flex>
 	)
