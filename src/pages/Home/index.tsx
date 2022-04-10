@@ -66,7 +66,7 @@ export const Home: React.FC = () => {
 								onNextPage={home.nextPage}
 								onPreviousPage={home.previousPage}
 								disable={home.isLoading}
-								alignSelf="flex-end"
+								alignSelf={{ base: "center", md: "flex-end"}}
 								mt={5}
 							/>
 						) : undefined
