@@ -8,7 +8,7 @@ interface IProps<DataType> extends GridProps {
 	footer?: JSX.Element;
 }
 
-export const PaginatedList = <DataType, >(props: IProps<DataType>) => {
+export const GridList = <DataType, >(props: IProps<DataType>) => {
 	const { items, renderItem, isLoading, footer, ...restProps } = props;
 
 	return (

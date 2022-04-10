@@ -56,7 +56,6 @@ const useHome = () => {
 				return;
 			}
 			fetchPage(pagination.page + 1)
-			console.log(pagination)
 		}
 	};
 

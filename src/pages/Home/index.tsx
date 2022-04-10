@@ -8,7 +8,7 @@ import useHome from "../../hooks/useHome";
 import {
 	Section,
 	BookCard,
-	PaginatedList,
+	GridList,
 	Pagination,
 	Loading,
 	BookModal,
@@ -47,7 +47,7 @@ export const Home: React.FC = () => {
 				onLogout={auth.logout}
 				disable={auth.isLoading}
 			>
-				<PaginatedList
+				<GridList
 					items={home.items}
 					renderItem={(item, index) => (
 						<BookCard

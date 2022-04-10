@@ -15,8 +15,6 @@ export const userLogin = async (
 			email,
 			password
 		})
-		console.log("status",response.status);
-		console.log(response.headers["refresh-token"]);
 	
 		return {
 			authorization: response.headers.authorization,
@@ -29,8 +27,6 @@ export const refreshToken = async (refreshToken: string): Promise<types.Tokens> 
 	const response = await axiosBase.post<types.Tokens>("/auth/refresh-token", {
 		refreshToken
 	});
-	console.log(response.headers.authorization);
-	console.log(response.headers["refresh-token"]);
 
 	return {
 		authorization: response.headers.authorization,
@@ -51,7 +47,6 @@ export const getPaginatedBooks = async (
 			}
 		}
 	);
-	console.log(response.data);
 
 	return response.data;
 };
@@ -62,7 +57,6 @@ export const getBookById = async (id: string, authorizationToken: string): Promi
 			authorization: `Bearer ${authorizationToken}`
 		}
 	});
-	console.log(response.data);
 
 	return response.data;
 };
