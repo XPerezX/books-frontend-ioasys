@@ -18,13 +18,14 @@ export const Pagination: React.FC<IProps> = (props) => {
 	const componentStrings = strings.components.pagination;
 	return (
 		<HStack {...rest}>
-			<Text>
+			<Text mx={{ base: 2, md: 0 }}>
 				{componentStrings.pageOutOfTotalPages(pagination.page, pagination.totalPages)}
 			</Text>
 			<IconButton
 				onClick={onPreviousPage}
 				src="lefArrowIcon.svg"
 				isDisabled={pagination.page === 1 || disable}
+				order={{ base: -1, md: 0 }}
 			/>
 			<IconButton
 				onClick={onNextPage}

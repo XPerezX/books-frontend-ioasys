@@ -50,6 +50,7 @@ const useAuthenticate = () => {
 			const authenticatedUser = await api.userLogin(email.trim(), password.trim());
 
 			saveIntoLocalStorage(authenticatedUser);
+			clearForm();
 			showToast.success(strings.pages.login.success(authenticatedUser.user.name));
 			onSuccess();
 		} catch (e) {
@@ -78,6 +79,11 @@ const useAuthenticate = () => {
 		} finally {
 			loader.end();
 		}
+	};
+
+	const clearForm = () => {
+		setEmail("");
+		setPassword("");
 	};
 
 	const checkIfUserIsLoggedIn = async (onFail: () => void, onSuccess?: () => void) => {
