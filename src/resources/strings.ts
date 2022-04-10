@@ -22,6 +22,12 @@ const strings = {
 	actions: {
 		signIn: "Entrar"
 	},
+	errors: {
+		userIsNotLoggedIn: "Usuário não está logado",
+		stillRunning: "Ainda Carregando. Por favor espere",
+		theresNoMorePages: "Não há mais páginas",
+		theresNoMorePreviousPages: "Não é mais possível retornar de página",
+	},
 	pages: {
 		login: {
 			success: (name: string) => `Bem Vindo ${name}`,

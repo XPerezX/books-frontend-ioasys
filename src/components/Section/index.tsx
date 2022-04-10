@@ -5,10 +5,12 @@ import strings from "../../resources/strings";
 
 interface IProps extends FlexProps {
 	currentUserName: string;
+	onLogout?: () => void;
+	disable?: boolean;
 }
 
 export const Section: React.FC<IProps> = (props) => {
-	const { currentUserName, children , ...restProps } = props;
+	const { currentUserName, onLogout, disable, children , ...restProps } = props;
 	const componentStrings = strings.components.section;
 
 	return (
@@ -36,6 +38,8 @@ export const Section: React.FC<IProps> = (props) => {
 						borderWidth={1}
 						p={1}
 						borderColor="gray.400"
+						disabled={disable}
+						onClick={onLogout}
 					>
 						<Image src="logoutIcon.svg" />
 					</Button>

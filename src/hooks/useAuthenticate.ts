@@ -1,9 +1,10 @@
 import React from "react";
-import * as api from "../resources/api";
-import showToast from "../resources/showToasts";
+
 import useLoader from "./useLoader";
-import strings from "../resources/strings";
+import showToast from "../resources/showToasts";
 import treatError from "../resources/treatError";
+import strings from "../resources/strings";
+import * as api from "../resources/api";
 
 const useAuthenticate = () => {
 	const [email, setEmail] = React.useState("");
@@ -26,7 +27,7 @@ const useAuthenticate = () => {
 	const getCurrentUserFromLocalStorage = (): api.types.AuthenticatedUser=> {
 		const currentUserJson = localStorage.getItem(local_storage_key);
 		if (!currentUserJson) {
-			throw new Error("It's not Logged in");
+			throw new Error(strings.errors.userIsNotLoggedIn);
 		}
 		const currentUser = JSON.parse(currentUserJson) as api.types.AuthenticatedUser;
 
@@ -34,6 +35,7 @@ const useAuthenticate = () => {
 	};
 
 	const cleanLocalStorage = () => {
+		setCurrentUser(null);
 		localStorage.removeItem(local_storage_key);
 	};
 
@@ -70,31 +72,36 @@ const useAuthenticate = () => {
 			return currentUser;
 		} catch (error) {
 			cleanLocalStorage();
-			console.log(error);
+			console.error(error);
 		} finally {
 			loader.end();
 		}
 	};
 
 	const checkIfUserIsLoggedIn = async (onFail: () => void, onSuccess?: () => void, ) => {
-		if (! await getCurrentUser()) {
+		if (!await getCurrentUser()) {
 			onFail();
 			return;
 		}
 		onSuccess && onSuccess();
 	}
 
+	const logout = () => {
+		cleanLocalStorage()
+	};
+
 	return {
+		checkIfUserIsLoggedIn,
+		getCurrentUser,
+		setPassword,
+		setEmail,
+		logout,
 		login,
 		currentUser,
 		email,
 		password,
-		setPassword,
-		setEmail,
 		isLoading: loader.isLoading,
 		errorMessage,
-		getCurrentUser,
-		checkIfUserIsLoggedIn,
 	};
 };
 

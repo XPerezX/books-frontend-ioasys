@@ -36,6 +36,11 @@ export const LoginForm: React.FC<IProps> = (props) => {
 					label={strings.fields.password}
 					onChangeText={(value) => authHook.setPassword(value)}
 					inputProps={{ type: "password" }}
+					onKeyDown={(event) => {
+						if (event.key === "Enter" && !authHook.isLoading) {
+							onSignIn();
+						}
+					}}
 					rightElement={{
 						childreen: (
 							<Button
