@@ -14,6 +14,24 @@ const strings = {
 			publisedOn: (year: number) => `Publicado em ${year}`,
 			publisher: (name: string) => `Editora ${name}`,
 		},
+		bookModal: {
+			description: {
+				title: "Resenha da editora",
+			},
+		},
+		bookDetails: {
+			title: "Informações",
+			fields: {
+				pages: "Páginas",
+				publisher: "Editora",
+				published: "Publicado",
+				language: "Idioma",
+				originalTitle: "Titulo Original",
+				isbn10: "ISBN-10",
+				isbn13: "ISBN-13",
+			},
+			pages: (pages: number) => `${pages} páginas`,
+		},
 		pagination: {
 			pageOutOfTotalPages: (page: number, totalPages: number) => `Página ${page} de ${totalPages}`,
 		},

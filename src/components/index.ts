@@ -7,3 +7,4 @@ export { BookCard } from "./BookCard";
 export { PaginatedList } from "./PaginatedList";
 export { Pagination } from "./Pagination";
 export { Loading } from "./Loading";
+export { BookModal } from "./BookModal";

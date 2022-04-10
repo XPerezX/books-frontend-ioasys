@@ -11,6 +11,7 @@ import {
 	PaginatedList,
 	Pagination,
 	Loading,
+	BookModal,
 } from "../../components";
 
 export const Home: React.FC = () => {
@@ -65,6 +66,7 @@ export const Home: React.FC = () => {
 						: undefined
 					}
 				/>
+				<BookModal isOpen={true} onClose={() => console} book={home.items[0]} />
 			</Section>
 
 		</Flex>
