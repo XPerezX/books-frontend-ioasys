@@ -1,5 +1,8 @@
 const strings = {
 	components: {
+		loading: {
+			pleaseWait: "Carregando. Por favor espere...",
+		},
 		logo: {
 			books: "Books"
 		},
