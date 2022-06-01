@@ -1,7 +1,6 @@
-`
- E-mail: desafio@ioasys.com.br
- Password: 12341234
-`
+## Try it Out
+`E-mail: desafio@ioasys.com.br`
+`Password: 12341234`
 
 ## Commands
 
